@@ -1,10 +1,28 @@
+import { Home } from "./pages/home";
+import { About } from "./pages/about";
+import { Store } from "./pages/store";
+import { Navbar } from "./components/navbar";
+
+import {Route, Routes} from "react-router-dom";
+import { Container } from "react-bootstrap";
+
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
 function App() {
 
   return (
-    <div className="App">
-      <h1>Hello world!!</h1>
-    </div>
+    <>
+    <ShoppingCartProvider>
+    <Navbar/>
+    <Container className="mb-4">
+      <Routes>
+        <Route path="/" element={<Store/>}/>
+        <Route path="/store" element={<Store/>}/>
+        <Route path="/about" element={<About/>}/>
+      </Routes>
+    </Container>
+    </ShoppingCartProvider>
+    </>
   )
 }
 
